@@ -1,0 +1,46 @@
+{
+  "title": "How to Convert HTML to Markdown: Complete Guide (2026)",
+  "description": "Learn how to convert HTML to Markdown using free online tools, APIs, and code libraries. Step-by-step guide for developers, writers, and content creators.",
+  "date": "2026-02-09",
+  "tags": [
+    "html",
+    "markdown",
+    "converter",
+    "guide",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Why Convert HTML to Markdown?",
+      "content": "HTML is the language of the web, but Markdown has become the standard for writing content. Converting HTML to Markdown makes your content more portable, readable, and easier to edit.\n\nHere are the most common reasons to convert HTML to Markdown:\n\n• **Content migration**: Moving blog posts from WordPress, Medium, or other platforms\n• **Documentation**: Converting web-based docs to Markdown for GitHub or GitLab\n• **Email newsletters**: Turning HTML emails into clean Markdown for archiving\n• **Note-taking**: Saving web articles in a readable, editable format\n• **Static site generators**: Jekyll, Hugo, and Gatsby all prefer Markdown\n\nMarkdown strips away the presentation layer (CSS, fonts, colors) and keeps only the structure and content. The result is cleaner, smaller files that work everywhere."
+    },
+    {
+      "heading": "Understanding the HTML to Markdown Conversion Process",
+      "content": "Converting HTML to Markdown isn't just about removing tags. A good converter intelligently maps HTML elements to their Markdown equivalents while preserving the document structure.\n\n**Here's how the conversion works:**\n\n• **Headers**: `<h1>` → `#`, `<h2>` → `##`, etc.\n• **Paragraphs**: `<p>` → plain text with blank lines\n• **Links**: `<a href=\"url\">text</a>` → `[text](url)`\n• **Images**: `<img src=\"url\" alt=\"text\">` → `![text](url)`\n• **Lists**: `<ul>/<ol>` → `- ` or `1. ` with proper indentation\n• **Emphasis**: `<strong>` → `**`, `<em>` → `*`\n• **Code**: `<code>` → `` ` `` (inline) or ` ``` ` (blocks)\n• **Tables**: `<table>` → pipe-delimited Markdown tables\n\nThe challenge comes with complex HTML: nested divs, inline styles, scripts, and non-standard elements. A quality converter handles these gracefully, either stripping them or converting them to the closest Markdown equivalent."
+    },
+    {
+      "heading": "Method 1: Using a Free Online Converter (Fastest)",
+      "content": "The easiest way to convert HTML to Markdown is using a free online tool. No installation, no signup, instant results.\n\n**Step-by-step using MarkdownMagic:**\n\n1. **Go to MarkdownMagic**\n   Visit https://markdown-magic-chi.vercel.app\n\n2. **Select conversion direction**\n   Choose \"HTML to Markdown\" from the dropdown\n\n3. **Paste your HTML**\n   Copy your HTML code and paste it into the input box, or upload an HTML file\n\n4. **Click Convert**\n   The tool instantly processes your HTML and shows the Markdown output\n\n5. **Copy or download**\n   Copy the Markdown to your clipboard or download as a .md file\n\n**Why use MarkdownMagic?**\n• Handles complex HTML structures (nested lists, tables, code blocks)\n• Preserves formatting like bold, italics, and links\n• Strips inline styles and scripts automatically\n• Free API for bulk conversions\n• Works entirely in your browser — your data stays private\n\nThis method is perfect for one-off conversions or when you need results in seconds."
+    },
+    {
+      "heading": "Method 2: Using the MarkdownMagic API (For Developers)",
+      "content": "If you need to convert HTML to Markdown programmatically, the MarkdownMagic API makes it simple.\n\n**API Endpoint:**\n```\nPOST https://markdown-magic-chi.vercel.app/api/v1/convert\n```\n\n**Request body:**\n```json\n{\n  \"input\": \"<h1>Hello World</h1><p>This is a test.</p>\",\n  \"direction\": \"html_to_markdown\"\n}\n```\n\n**Example with cURL:**\n```bash\ncurl -X POST https://markdown-magic-chi.vercel.app/api/v1/convert \\\\n  -H \"Content-Type: application/json\" \\\\n  -H \"X-API-Key: your_api_key\" \\\\n  -d '{\"input\": \"<h1>Title</h1>\", \"direction\": \"html_to_markdown\"}'\n```\n\n**Example with JavaScript:**\n```javascript\nconst response = await fetch('https://markdown-magic-chi.vercel.app/api/v1/convert', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n    'X-API-Key': 'your_api_key'\n  },\n  body: JSON.stringify({\n    input: htmlString,\n    direction: 'html_to_markdown'\n  })\n});\n\nconst data = await response.json();\nconsole.log(data.output); // Your Markdown\n```\n\nThe API is perfect for:\n• Bulk converting blog archives\n• Building content migration tools\n• Automating documentation workflows\n• Integrating into CMS platforms"
+    },
+    {
+      "heading": "Method 3: Using Command Line Tools",
+      "content": "For developers who prefer the terminal, several command-line tools convert HTML to Markdown.\n\n**Option 1: Pandoc (Most Powerful)**\n\nPandoc is the Swiss Army knife of document conversion. Install it, then run:\n\n```bash\n# Convert an HTML file to Markdown\npandoc input.html -o output.md\n\n# Convert from a URL\npandoc https://example.com/page -o output.md\n\n# Strip HTML tags, keep only text\npandoc input.html -o output.md --strip-tags\n```\n\n**Option 2: html2markdown (Node.js)**\n\n```bash\n# Install globally\nnpm install -g html2markdown\n\n# Convert a file\nhtml2markdown input.html > output.md\n```\n\n**Option 3: Python with BeautifulSoup**\n\n```python\nfrom bs4 import BeautifulSoup\nimport html2text\n\n# Read HTML\nwith open('input.html', 'r') as f:\n    html = f.read()\n\n# Convert\nconverter = html2text.HTML2Text()\nconverter.ignore_links = False\nmarkdown = converter.handle(html)\n\n# Save\nwith open('output.md', 'w') as f:\n    f.write(markdown)\n```\n\nCommand line tools are best for batch processing, build pipelines, and automation scripts."
+    },
+    {
+      "heading": "Handling Complex HTML: Tables, Code Blocks, and More",
+      "content": "Not all HTML converts cleanly to Markdown. Here's how to handle common edge cases:\n\n**Tables**\nHTML tables convert to Markdown pipe tables, but complex tables with merged cells (colspan/rowspan) lose some formatting. Consider keeping these as HTML within your Markdown.\n\n**Code Blocks**\nMost converters handle `<pre><code>` blocks correctly, converting them to fenced code blocks with triple backticks. However, syntax highlighting classes may be lost.\n\n**Images**\nHTML images with complex attributes (width, height, classes) become simple Markdown images. The extra attributes are typically stripped.\n\n**Nested Divs and Spans**\nMarkdown doesn't have equivalents for `<div>` and `<span>`. Good converters strip these while preserving their content. Bad converters leave HTML tags scattered throughout your Markdown.\n\n**Inline Styles**\nMarkdown doesn't support colors, fonts, or custom styling. All inline CSS is stripped during conversion.\n\n**Best Practice**: Always review converted Markdown, especially for documents with complex formatting. Some documents may need manual cleanup after conversion."
+    },
+    {
+      "heading": "Common Mistakes to Avoid",
+      "content": "When converting HTML to Markdown, watch out for these pitfalls:\n\n**1. Losing Link References**\nSome converters strip links entirely instead of converting them to Markdown format. Always check that your links survived the conversion.\n\n**2. Broken Lists**\nNested lists are tricky. Make sure sub-items are properly indented with 2 or 4 spaces.\n\n**3. Escaped Characters**\nMarkdown uses characters like `*`, `_`, and `` ` `` for formatting. If your HTML contains these, they may need escaping with backslashes.\n\n**4. Preserving HTML Entities**\nEntities like `&amp;`, `&lt;`, and `&gt;` should be decoded to `&`, `<`, and `>` in Markdown.\n\n**5. Ignoring the Output**\nNever assume conversion is perfect. Always review the Markdown output, especially for important documents.\n\n**Pro Tip**: Test your conversion with a small sample first. Once you're confident the tool handles your specific HTML structure correctly, process the full document."
+    },
+    {
+      "heading": "Start Converting HTML to Markdown Free",
+      "content": "Ready to convert your HTML to clean, portable Markdown? MarkdownMagic makes it effortless — no signup required, instant results, and your data never leaves your browser.\n\nWhether you're migrating a blog, cleaning up documentation, or archiving web content, MarkdownMagic handles the conversion so you can focus on creating.\n\n**[Convert HTML to Markdown Free →](https://markdown-magic-chi.vercel.app)**\n\nNeed API access for bulk conversions? Sign up for a free API key and process thousands of documents programmatically."
+    }
+  ]
+}
